@@ -14,3 +14,5 @@ project folder where all files have been unzipped In Terminal
 window execute npm install in the client directory and in the 
 server directory. Execute node index.js in the server directory and 
 in another terminal run npm start in the client directory.
+
+To run puppeteer 
