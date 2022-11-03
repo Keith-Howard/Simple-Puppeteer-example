@@ -15,4 +15,14 @@ window execute npm install in the client directory and in the
 server directory. Execute node index.js in the server directory and 
 in another terminal run npm start in the client directory.
 
-To run puppeteer 
+# To run puppeteer 
+
+Step 1 - Launch Puppeteer and assign response to the browser variable
+
+Step 2 - Using the browser variable, create a new page and assign the response to the page variable
+
+Step 3 - Using the page variable goto the correct URL that the React app is running on
+
+Step 4 - Using the page variable, use the click method by passing the ".create-user" class name
+
+Step 5 - Using the page variable, use the screenshot method to generate a screenshot of the React app with the newly created user
