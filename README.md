@@ -26,3 +26,5 @@ Step 3 - Using the page variable goto the correct URL that the React app is runn
 Step 4 - Using the page variable, use the click method by passing the ".create-user" class name
 
 Step 5 - Using the page variable, use the screenshot method to generate a screenshot of the React app with the newly created user
+
+// make sure to run the client first then the server so that there is something running on the port that puppeteer is listening on
