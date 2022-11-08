@@ -44,4 +44,4 @@ app.listen(8080, function () {
   connectDb().then(() => console.log('MongoDb connected'));
 });
 
-testCreateUserButton();
+ testCreateUserButton();
