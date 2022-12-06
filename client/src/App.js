@@ -9,83 +9,71 @@ import Row from 'react-bootstrap/Row';
 
 const apiUrl = `http://localhost:8080`;
 
-class App extends Component {
-  state = {
-    users: [],
-  };
+function App() {
+    const [users, setUsers] = React.useState([]);
 
-  async createUser() {
-    await axios.get(apiUrl + '/user-create');
-    this.loadUsers();
-  }
 
-  async deleteAllUsers() {
-    await axios.get(apiUrl + '/users-delete');
-    this.setState({
-      users: [],
-    });
-  }
+    async function createUser() {
+        await axios.get(apiUrl + '/user-create');
+        loadUsers();
+    };
 
-  async loadUsers() {
-    const res = await axios.get(apiUrl + '/users');
-    this.setState({
-      users: res.data,
-    });
-  }
+    async function deleteAllUsers() {
+        await axios.get(apiUrl + '/users-delete');
+        setUsers([]);
+    };
 
-  componentDidMount() {
-    this.loadUsers();
-  }
+    async function loadUsers() {
+        const res = await axios.get(apiUrl + '/users');
+        setUsers(res.data);
+    };
 
-  render() {
     return (
-      <div className="App">
-        <Container fluid>
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-          </header>
-          <Row className="App-buttons">
-            <Button
-              className="App-button create-user"
-              variant="dark"
-              onClick={() => this.createUser()}
-            >
-              Create User
-            </Button>
+        <div className="App">
+            <Container fluid>
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+            </header>
+            <Row className="App-buttons">
+                <Button
+                className="App-button create-user"
+                variant="dark"
+                onClick={() => createUser()}
+                >
+                Create User
+                </Button>
 
-            <Button
-              className="App-button delete-user"
-              variant="dark"
-              onClick={() => this.deleteAllUsers()}
-            >
-              Delete All Users
-            </Button>
-          </Row>
+                <Button
+                className="App-button delete-user"
+                variant="dark"
+                onClick={() => deleteAllUsers()}
+                >
+                Delete All Users
+                </Button>
+            </Row>
 
-          <div className="App-body">
-            <Table striped bordered hover size="sm" variant="dark">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Username</th>
-                  <th>Email Address</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.users.map((user, index) => (
-                  <tr className="user-name">
-                    <td>{index + 1}</td>
-                    <td key={user.username}>{user.username}</td>
-                    <td key={user.email}>{user.email}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-        </Container>
-      </div>
+            <div className="App-body">
+                <Table striped bordered hover size="sm" variant="dark">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Email Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map((user, index) => (
+                    <tr className="user-name">
+                        <td>{index + 1}</td>
+                        <td key={user.username}>{user.username}</td>
+                        <td key={user.email}>{user.email}</td>
+                    </tr>
+                    ))}
+                </tbody>
+                </Table>
+            </div>
+            </Container>
+        </div>
     );
-  }
 }
-
 export default App;
