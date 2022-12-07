@@ -12,8 +12,12 @@ the files from the repository. In order to run this you need to
 have a local web server. How to install local, In VS Code open 
 project folder where all files have been unzipped In Terminal 
 window execute npm install in the client directory and in the 
-server directory. Execute node index.js in the server directory and 
-in another terminal run npm start in the client directory.
+server directory. If you notice you have a lot of ciritcal 
+dependency issues after running npm install, execute npm audit 
+fix --force to resolve this. Execute node index.js in the 
+server directory and in another terminal run npm start in the 
+client directory.
+
 
 # To run puppeteer 
 
